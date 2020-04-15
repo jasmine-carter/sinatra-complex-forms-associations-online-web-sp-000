@@ -41,10 +41,10 @@ class PetsController < ApplicationController
   end
 
   patch '/pets/:id' do
-    #binding.pry
     @pet = Pet.find(params[:id])
     @owner = params[:owner]
     @pet.update(params[:pet])
+    binding.pry
     if Owner.all.find_by id: params[:owner][:id]
       @pet.update(Owner.find_by id: params[:owner])
     else
