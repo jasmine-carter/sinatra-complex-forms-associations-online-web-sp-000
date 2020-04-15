@@ -45,7 +45,7 @@ class PetsController < ApplicationController
     @pet = Pet.find(params[:id])
     @owner = params[:owner]
     @pet.update(params[:pet])
-    if Owner.all.find_by id: @owner[:id]
+    if Owner.all.find_by id: params[:owner_id]
       @pet.update(params[:owner])
     else
       @pet.owner = Owner.create(name: params[:owner][:name])
