@@ -46,7 +46,7 @@ class PetsController < ApplicationController
     @pet.update(params[:pet])
     binding.pry
     if Owner.all.find_by id: params[:owner][:id]
-      @pet.update(Owner.find_by id: params[:owner])
+      @pet.update(Owner.find_by id: params[:owner][:id])
     else
       @pet.owner = Owner.create(name: params[:owner][:name])
       @pet.save
